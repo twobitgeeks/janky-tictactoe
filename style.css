@@ -1,0 +1,57 @@
+body {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-container {
+  width: 600px;
+  height: 600px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+}
+
+.grid-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 200px;
+  font-size: 150px;
+}
+
+.button-area {
+  margin: auto;
+  padding-top: 20px;
+}
+
+#message {
+  text-align: center;
+}
+
+#box0,
+#box1,
+#box3,
+#box4 {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+#box2,
+#box5 {
+  border-bottom: 1px solid black;
+}
+
+#box6,
+#box7 {
+  border-right: 1px solid black;
+}
+
+.hide {
+  display: none;
+}
