@@ -9,20 +9,31 @@ body {
 }
 
 .grid-container {
-  width: 600px;
-  height: 600px;
-  margin: auto;
   display: grid;
-  grid-template-columns: 200px 200px 200px;
+  width: 300px;
+  margin: auto;
+  grid-template-columns: auto auto auto;
 }
 
 .grid-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
-  width: 200px;
-  font-size: 150px;
+  width: 100px;
+  height: 100px;
+  font-size: 75px;
+}
+
+@media only screen and (min-width: 720px) {
+  .grid-container {
+    width: 600px;
+  }
+
+  .grid-box {
+    width: 200px;
+    height: 200px;
+    font-size: 150px;
+  }
 }
 
 .button-area {
