@@ -105,7 +105,9 @@ function displayGameState(gameState) {
   let boxDivs = [];
   for (let i = 0; i <= 8; i++) {
     boxDivs[i] = document.getElementById('box' + i);
-    boxDivs[i].innerText = gameState[i];
+    if (boxDivs[i].innerText != gameState[i]) {
+      boxDivs[i].innerText = gameState[i];
+    }
   }
 }
 
