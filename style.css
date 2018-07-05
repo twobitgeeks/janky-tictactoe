@@ -3,6 +3,10 @@ body {
   font-family: sans-serif;
 }
 
+.hide {
+  display: none;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -63,6 +67,17 @@ body {
   border-right: 1px solid black;
 }
 
-.hide {
-  display: none;
+#play-button {
+  background-color: gray;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+#play-button:hover {
+  background-color: lightgray;
+  cursor: pointer;
 }
