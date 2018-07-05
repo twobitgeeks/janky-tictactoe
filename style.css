@@ -1,6 +1,6 @@
 body {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 .hide {
@@ -68,9 +68,11 @@ body {
 }
 
 #play-button {
-  background-color: gray;
+  background-color: #333;
   border: none;
-  color: white;
+  border-radius: 3px;
+  box-shadow: 3px 3px 6px #ddd;
+  color: #fff;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -78,6 +80,6 @@ body {
 }
 
 #play-button:hover {
-  background-color: lightgray;
+  background-color: #777;
   cursor: pointer;
 }
