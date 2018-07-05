@@ -61,10 +61,9 @@ function updateGameState(thisMove) {
       }
     }
 
-    for (let i = 0; i < winsRemainingO.length; i++) {
+    for (let i = winsRemainingO.length - 1; i >= 0; i--) {
       if (winsRemainingO[i].includes(thisMove)) {
         winsRemainingO.splice(i, 1);
-        i--;
       }
     }
 
@@ -85,10 +84,9 @@ function updateGameState(thisMove) {
       }
     }
 
-    for (let i = 0; i < winsRemainingX.length; i++) {
+    for (let i = winsRemainingX.length - 1; i >= 0; i--) {
       if (winsRemainingX[i].includes(thisMove)) {
         winsRemainingX.splice(i, 1);
-        i--;
       }
     }
 
