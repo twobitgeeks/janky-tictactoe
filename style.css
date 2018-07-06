@@ -1,6 +1,5 @@
 body {
   box-sizing: border-box;
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 .hide {
@@ -25,6 +24,7 @@ body {
   align-items: center;
   width: 100px;
   height: 100px;
+  font-family: 'Patrick Hand', cursive;
   font-size: 75px;
 }
 
@@ -47,6 +47,7 @@ body {
 
 #message {
   text-align: center;
+  font-family: Helvetica, sans-serif;
 }
 
 #box0,
