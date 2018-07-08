@@ -22,10 +22,10 @@ function resetGameState() {
   for (let i = 0; i <= 8; i++) {
     gameState[i] = '';
   }
-  for (let i = 0; i < 8; i++) {
-    winsRemainingX[i] = potentialWins[i];
-    winsRemainingO[i] = potentialWins[i];
-  }
+
+  winsRemainingX = potentialWins.slice();
+  winsRemainingO = potentialWins.slice();
+
   movesMade = 0;
   currentPlayer = 'X';
   gameOver = false;
