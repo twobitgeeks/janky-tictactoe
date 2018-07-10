@@ -19,9 +19,7 @@ resetGameState();
 
 // reset the game state to empty
 function resetGameState() {
-  for (let i = 0; i <= 8; i++) {
-    gameState[i] = '';
-  }
+  gameState = ['', '', '', '', '', '', '', '', ''];
 
   winsRemainingX = potentialWins.slice();
   winsRemainingO = potentialWins.slice();
