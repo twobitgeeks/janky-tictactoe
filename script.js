@@ -44,12 +44,12 @@ function makeMove(event) {
 
 // update the game state with the current move
 function updateGameState(thisMove) {
-  movesMade++;
+  movesMade += 1;
 
   if (currentPlayer === 'X') {
     gameState[thisMove] = 'X';
 
-    for (let i = 0; i < winsRemainingX.length; i++) {
+    for (let i = 0; i < winsRemainingX.length; i += 1) {
       if (winsRemainingX[i].includes(thisMove)) {
         let putMove = winsRemainingX[i].replace(thisMove, 'X');
         winsRemainingX[i] = putMove;
@@ -59,7 +59,7 @@ function updateGameState(thisMove) {
       }
     }
 
-    for (let i = winsRemainingO.length - 1; i >= 0; i--) {
+    for (let i = winsRemainingO.length - 1; i >= 0; i -= 1) {
       if (winsRemainingO[i].includes(thisMove)) {
         winsRemainingO.splice(i, 1);
       }
@@ -72,7 +72,7 @@ function updateGameState(thisMove) {
   } else if (currentPlayer === 'O') {
     gameState[thisMove] = 'O';
 
-    for (let i = 0; i < winsRemainingO.length; i++) {
+    for (let i = 0; i < winsRemainingO.length; i += 1) {
       if (winsRemainingO[i].includes(thisMove)) {
         let putMove = winsRemainingO[i].replace(thisMove, 'O');
         winsRemainingO[i] = putMove;
@@ -82,7 +82,7 @@ function updateGameState(thisMove) {
       }
     }
 
-    for (let i = winsRemainingX.length - 1; i >= 0; i--) {
+    for (let i = winsRemainingX.length - 1; i >= 0; i -= 1) {
       if (winsRemainingX[i].includes(thisMove)) {
         winsRemainingX.splice(i, 1);
       }
@@ -101,7 +101,7 @@ function updateGameState(thisMove) {
 // update display to reflect current game state
 function displayGameState(gameState) {
   let boxDivs = [];
-  for (let i = 0; i <= 8; i++) {
+  for (let i = 0; i <= 8; i += 1) {
     boxDivs[i] = document.getElementById('box' + i);
     if (boxDivs[i].innerText != gameState[i]) {
       boxDivs[i].innerText = gameState[i];
