@@ -10,8 +10,8 @@ class Storage {
     };
   }
 
+  // get last game state from local storage
   getGameState() {
-    // get last game state from local storage
     if (JSON.parse(localStorage.getItem('gameState')) === null) {
       this.gameState = this.defaultState;
     } else {
@@ -20,8 +20,8 @@ class Storage {
     return this.gameState;
   }
 
+  // set current game state to local storage
   setGameState(gameState) {
-    // set current game state to local storage
     localStorage.setItem('gameState', JSON.stringify(gameState));
   }
 }
@@ -33,8 +33,8 @@ class UI {
     this.playAgainButton = document.querySelector('#play-button');
   }
 
+  // draw the current game state to the board
   draw(gameState) {
-    // update board here
     let boxDivs = [];
     for (let i = 0; i <= 8; i += 1) {
       boxDivs[i] = document.getElementById('box' + i);
@@ -42,9 +42,9 @@ class UI {
         boxDivs[i].innerText = gameState.currentBoard[i];
       }
     }
-    console.log(gameState);
   }
 
+  // display message in the message area
   displayMessage(message) {
     this.messageArea.textContent = message;
   }
@@ -63,6 +63,7 @@ class UI {
   // init game
   document.addEventListener('DOMContentLoaded', setupGame);
 
+  // set up the game
   function setupGame() {
     storage.getGameState();
     if (gameState.gameOver) {
@@ -75,6 +76,7 @@ class UI {
     }
   }
 
+  // respond to move made on the board
   function makeMove(event) {
     let moveIndex = event.target.id.slice(-1);
     if (gameState.currentBoard[moveIndex] === '' && !gameState.gameOver) {
@@ -114,22 +116,26 @@ class UI {
     }
   }
 
+  // game over, man!
   function declareWinner(currentPlayer) {
     ui.displayMessage(`${currentPlayer} is the winner!`);
     endGame();
   }
 
+  // it's a draw
   function declareDraw() {
     ui.displayMessage('The game is a draw.');
     endGame();
   }
 
+  // set board to end game state
   function endGame() {
     ui.gridContainer.removeEventListener('click', makeMove);
     ui.playAgainButton.classList.remove('hide');
     ui.playAgainButton.addEventListener('mouseup', playAgain);
   }
 
+  // reset everything and play again
   function playAgain() {
     gameState.currentBoard = ['', '', '', '', '', '', '', '', ''];
     gameState.winsRemaining = [
