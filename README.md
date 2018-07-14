@@ -8,5 +8,4 @@ A particularly janky implementation of Tic Tac Toe. Used as an exercise in learn
 
 - Make it less janky
 - Improve CSS styling
-- Avoid global variables
 - Implement computer opponent
