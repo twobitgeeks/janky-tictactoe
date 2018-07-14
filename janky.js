@@ -90,16 +90,17 @@ class UI {
             gameState.currentPlayer
           );
           gameState.winsRemaining[i] = putMove;
+          console.log(putMove);
           if (putMove === 'XXX' || putMove === 'OOO') {
             gameState.gameOver = true;
             declareWinner(gameState.currentPlayer);
-          } else {
-            if (gameState.movesMade === 9) {
-              gameState.gameOver = true;
-              declareDraw();
-            }
           }
         }
+      }
+
+      if (gameState.movesMade >= 9 && !gameState.gameOver) {
+        gameState.gameOver = true;
+        declareDraw();
       }
 
       if (gameState.currentPlayer === 'X') {
