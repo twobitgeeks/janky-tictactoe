@@ -35,13 +35,10 @@ class UI {
 
   // draw the current game state to the board
   draw(gameState) {
-    let boxDivs = [];
-    for (let i = 0; i <= 8; i += 1) {
-      boxDivs[i] = document.getElementById('box' + i);
-      if (boxDivs[i].innerText !== gameState.currentBoard[i]) {
-        boxDivs[i].innerText = gameState.currentBoard[i];
-      }
-    }
+    let boxDivs = document.querySelectorAll('.grid-box');
+    boxDivs.forEach(function (box, index) {
+      box.innerText = gameState.currentBoard[index];
+    });
   }
 
   // display message in the message area
