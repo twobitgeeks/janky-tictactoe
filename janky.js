@@ -50,7 +50,7 @@ class UI {
   }
 }
 
-(function() {
+(function () {
   // init storage
   const storage = new Storage();
 
@@ -90,7 +90,7 @@ class UI {
             gameState.currentPlayer
           );
           gameState.winsRemaining[i] = putMove;
-          console.log(putMove);
+
           if (putMove === 'XXX' || putMove === 'OOO') {
             gameState.gameOver = true;
             declareWinner(gameState.currentPlayer);
