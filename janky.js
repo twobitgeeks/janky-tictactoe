@@ -36,7 +36,7 @@ class UI {
   // draw the current game state to the board
   draw(gameState) {
     let boxDivs = document.querySelectorAll('.grid-box');
-    boxDivs.forEach(function (box, index) {
+    boxDivs.forEach(function(box, index) {
       box.innerText = gameState.currentBoard[index];
     });
   }
@@ -47,7 +47,7 @@ class UI {
   }
 }
 
-(function () {
+(function() {
   // init storage
   const storage = new Storage();
 
@@ -80,20 +80,20 @@ class UI {
       gameState.movesMade += 1;
       gameState.currentBoard[moveIndex] = gameState.currentPlayer;
 
-      for (let i = 0; i < 8; i += 1) {
-        if (gameState.winsRemaining[i].includes(moveIndex)) {
-          let putMove = gameState.winsRemaining[i].replace(
+      gameState.winsRemaining.forEach(function(box, index) {
+        if (box.includes(moveIndex)) {
+          let putMove = gameState.winsRemaining[index].replace(
             moveIndex,
             gameState.currentPlayer
           );
-          gameState.winsRemaining[i] = putMove;
+          gameState.winsRemaining[index] = putMove;
 
           if (putMove === 'XXX' || putMove === 'OOO') {
             gameState.gameOver = true;
             declareWinner(gameState.currentPlayer);
           }
         }
-      }
+      });
 
       if (gameState.movesMade >= 9 && !gameState.gameOver) {
         gameState.gameOver = true;
