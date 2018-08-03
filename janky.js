@@ -75,7 +75,8 @@ class UI {
 
   // respond to move made on the board
   function makeMove(event) {
-    let moveIndex = event.target.id.slice(-1);
+    let moveIndex = event.target.dataset.index;
+    console.log(moveIndex);
     if (gameState.currentBoard[moveIndex] === '' && !gameState.gameOver) {
       gameState.movesMade += 1;
       gameState.currentBoard[moveIndex] = gameState.currentPlayer;
