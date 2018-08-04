@@ -1,76 +1,76 @@
 body {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .hide {
-  display: none;
+    display: none;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .grid-container {
-  display: grid;
-  width: 300px;
-  margin: auto;
-  grid-template-columns: auto auto auto;
+    display: grid;
+    width: 300px;
+    margin: auto;
+    grid-template-columns: auto auto auto;
 }
 
 .grid-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  font-family: 'Patrick Hand', cursive;
-  font-size: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    font-family: "Patrick Hand", cursive;
+    font-size: 75px;
 }
 
 @media only screen and (min-width: 720px) {
-  .grid-container {
-    width: 600px;
-  }
+    .grid-container {
+        width: 600px;
+    }
 
-  .grid-box {
-    width: 200px;
-    height: 200px;
-    font-size: 150px;
-  }
+    .grid-box {
+        width: 200px;
+        height: 200px;
+        font-size: 150px;
+    }
 }
 
 .right {
-  border-right: 1px solid black;
+    border-right: 1px solid black;
 }
 
-.bottom { 
-  border-bottom: 1px solid black;
+.bottom {
+    border-bottom: 1px solid black;
 }
 
 .button-area {
-  margin: auto;
-  padding-top: 20px;
+    margin: auto;
+    padding-top: 20px;
 }
 
 #message {
-  text-align: center;
-  font-family: Helvetica, sans-serif;
+    text-align: center;
+    font-family: Helvetica, sans-serif;
 }
 
 #play-button {
-  background-color: #333;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 3px 3px 6px #ddd;
-  color: #fff;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
+    background-color: #333;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 3px 3px 6px #ddd;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
 }
 
 #play-button:hover {
-  background-color: #777;
-  cursor: pointer;
+    background-color: #777;
+    cursor: pointer;
 }
