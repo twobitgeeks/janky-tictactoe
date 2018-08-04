@@ -1,43 +1,43 @@
-'use strict';
+"use strict";
 
 class Storage {
   constructor() {
     this.gameState;
     this.defaultState = {
-      currentBoard: ['', '', '', '', '', '', '', '', ''],
-      winsRemaining: ['012', '345', '678', '036', '147', '258', '048', '246'],
+      currentBoard: ["", "", "", "", "", "", "", "", ""],
+      winsRemaining: ["012", "345", "678", "036", "147", "258", "048", "246"],
       movesMade: 0,
-      currentPlayer: 'X',
+      currentPlayer: "X",
       gameOver: false
     };
   }
 
   // get last game state from local storage
   getGameState() {
-    if (JSON.parse(localStorage.getItem('gameState')) === null) {
+    if (JSON.parse(localStorage.getItem("gameState")) === null) {
       this.gameState = this.defaultState;
     } else {
-      this.gameState = JSON.parse(localStorage.getItem('gameState'));
+      this.gameState = JSON.parse(localStorage.getItem("gameState"));
     }
     return this.gameState;
   }
 
   // set current game state to local storage
   setGameState(gameState) {
-    localStorage.setItem('gameState', JSON.stringify(gameState));
+    localStorage.setItem("gameState", JSON.stringify(gameState));
   }
 }
 
 class UI {
   constructor() {
-    this.messageArea = document.querySelector('#message');
-    this.gridContainer = document.querySelector('.grid-container');
-    this.playAgainButton = document.querySelector('#play-button');
+    this.messageArea = document.querySelector("#message");
+    this.gridContainer = document.querySelector(".grid-container");
+    this.playAgainButton = document.querySelector("#play-button");
   }
 
   // draw the current game state to the board
   draw(gameState) {
-    let boxDivs = document.querySelectorAll('.grid-box');
+    let boxDivs = document.querySelectorAll(".grid-box");
     boxDivs.forEach(function(box, index) {
       box.innerText = gameState.currentBoard[index];
     });
@@ -60,7 +60,7 @@ class UI {
   const ui = new UI();
 
   // init game
-  document.addEventListener('DOMContentLoaded', setupGame);
+  document.addEventListener("DOMContentLoaded", setupGame);
 
   // set up the game
   function setupGame() {
@@ -68,8 +68,8 @@ class UI {
     if (gameState.gameOver) {
       playAgain();
     } else {
-      ui.playAgainButton.classList.add('hide');
-      ui.gridContainer.addEventListener('click', makeMove);
+      ui.playAgainButton.classList.add("hide");
+      ui.gridContainer.addEventListener("click", makeMove);
       ui.draw(gameState);
       ui.displayMessage(`${gameState.currentPlayer} to move`);
     }
@@ -78,7 +78,7 @@ class UI {
   // respond to move made on the board
   function makeMove(event) {
     let moveIndex = event.target.dataset.index;
-    if (gameState.currentBoard[moveIndex] === '' && !gameState.gameOver) {
+    if (gameState.currentBoard[moveIndex] === "" && !gameState.gameOver) {
       gameState.movesMade += 1;
       gameState.currentBoard[moveIndex] = gameState.currentPlayer;
 
@@ -90,7 +90,7 @@ class UI {
           );
           gameState.winsRemaining[index] = putMove;
 
-          if (putMove === 'XXX' || putMove === 'OOO') {
+          if (putMove === "XXX" || putMove === "OOO") {
             gameState.gameOver = true;
             declareWinner(gameState.currentPlayer);
           }
@@ -102,10 +102,10 @@ class UI {
         declareDraw();
       }
 
-      if (gameState.currentPlayer === 'X') {
-        gameState.currentPlayer = 'O';
+      if (gameState.currentPlayer === "X") {
+        gameState.currentPlayer = "O";
       } else {
-        gameState.currentPlayer = 'X';
+        gameState.currentPlayer = "X";
       }
 
       ui.draw(gameState);
@@ -122,39 +122,39 @@ class UI {
     endGame();
   }
 
-  // it's a draw
+  // it"s a draw
   function declareDraw() {
-    ui.displayMessage('The game is a draw.');
+    ui.displayMessage("The game is a draw.");
     endGame();
   }
 
   // set board to end game state
   function endGame() {
-    ui.gridContainer.removeEventListener('click', makeMove);
-    ui.playAgainButton.classList.remove('hide');
-    ui.playAgainButton.addEventListener('mouseup', playAgain);
+    ui.gridContainer.removeEventListener("click", makeMove);
+    ui.playAgainButton.classList.remove("hide");
+    ui.playAgainButton.addEventListener("mouseup", playAgain);
   }
 
   // reset everything and play again
   function playAgain() {
-    gameState.currentBoard = ['', '', '', '', '', '', '', '', ''];
+    gameState.currentBoard = ["", "", "", "", "", "", "", "", ""];
     gameState.winsRemaining = [
-      '012',
-      '345',
-      '678',
-      '036',
-      '147',
-      '258',
-      '048',
-      '246'
+      "012",
+      "345",
+      "678",
+      "036",
+      "147",
+      "258",
+      "048",
+      "246"
     ];
     gameState.movesMade = 0;
-    gameState.currentPlayer = 'X';
+    gameState.currentPlayer = "X";
     gameState.gameOver = false;
     storage.setGameState(gameState);
     ui.draw(gameState);
     ui.displayMessage(`${gameState.currentPlayer} to move`);
-    ui.playAgainButton.classList.add('hide');
-    ui.gridContainer.addEventListener('click', makeMove);
+    ui.playAgainButton.classList.add("hide");
+    ui.gridContainer.addEventListener("click", makeMove);
   }
 })();
