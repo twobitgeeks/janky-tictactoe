@@ -1,3 +1,5 @@
+'use strict';
+
 class Storage {
   constructor() {
     this.gameState;
