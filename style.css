@@ -40,6 +40,14 @@ body {
   }
 }
 
+.right {
+  border-right: 1px solid black;
+}
+
+.bottom { 
+  border-bottom: 1px solid black;
+}
+
 .button-area {
   margin: auto;
   padding-top: 20px;
@@ -48,24 +56,6 @@ body {
 #message {
   text-align: center;
   font-family: Helvetica, sans-serif;
-}
-
-#box0,
-#box1,
-#box3,
-#box4 {
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-#box2,
-#box5 {
-  border-bottom: 1px solid black;
-}
-
-#box6,
-#box7 {
-  border-right: 1px solid black;
 }
 
 #play-button {
