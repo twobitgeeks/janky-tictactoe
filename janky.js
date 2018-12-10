@@ -1,5 +1,10 @@
 "use strict";
 
+const playerImages = {
+  "X": "solid_blue.png",
+  "O": "solid_red.png"
+};
+
 class Storage {
     constructor() {
         this.gameState;
@@ -39,6 +44,7 @@ class Storage {
 
 class UI {
     constructor() {
+        this.messageImage = document.querySelector("#message-image");
         this.messageArea = document.querySelector("#message");
         this.gridContainer = document.querySelector(".grid-container");
         this.playAgainButton = document.querySelector("#play-button");
@@ -47,14 +53,28 @@ class UI {
     // draw the current game state to the board
     draw(gameState) {
         let boxDivs = document.querySelectorAll(".grid-box");
+        let background = "";
         boxDivs.forEach(function(box, index) {
-            box.innerText = gameState.currentBoard[index];
+            if (gameState.currentBoard[index] in playerImages) {
+                let imagePath = playerImages[gameState.currentBoard[index]]
+                background = `url(${imagePath})`;
+            } else {
+                background = "none";
+            }
+            box.style.background = background;
+            box.style.backgroundSize = "cover";
         });
     }
 
     // display message in the message area
-    displayMessage(message) {
+    displayMessage(message, image=null) {
         this.messageArea.textContent = message;
+        if (image) {
+            this.messageImage.src = image;
+            this.messageImage.style.display = "inline-block";
+        } else {
+            this.messageImage.style.display = "none";
+        }
     }
 }
 
@@ -80,7 +100,8 @@ class UI {
             ui.playAgainButton.classList.add("hide");
             ui.gridContainer.addEventListener("click", makeMove);
             ui.draw(gameState);
-            ui.displayMessage(`${gameState.currentPlayer} to move`);
+            ui.displayMessage(" to move", 
+                              playerImages[gameState.currentPlayer]);
         }
     }
 
@@ -120,14 +141,15 @@ class UI {
             ui.draw(gameState);
             storage.setGameState(gameState);
             if (!gameState.gameOver) {
-                ui.displayMessage(`${gameState.currentPlayer} to move`);
+                ui.displayMessage(" to move",
+                                  playerImages[gameState.currentPlayer]);
             }
         }
     }
 
     // game over, man!
     function declareWinner(currentPlayer) {
-        ui.displayMessage(`${currentPlayer} is the winner!`);
+        ui.displayMessage(" is the winner!", playerImages[currentPlayer]);
         endGame();
     }
 
@@ -162,7 +184,7 @@ class UI {
         gameState.gameOver = false;
         storage.setGameState(gameState);
         ui.draw(gameState);
-        ui.displayMessage(`${gameState.currentPlayer} to move`);
+        ui.displayMessage(" to move", playerImages[gameState.currentPlayer]);
         ui.playAgainButton.classList.add("hide");
         ui.gridContainer.addEventListener("click", makeMove);
     }
