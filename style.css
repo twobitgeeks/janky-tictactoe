@@ -53,9 +53,21 @@ body {
     padding-top: 20px;
 }
 
+header {
+  text-align: center;
+}
+
+#message-image {
+  display: none;
+  height: 2.5em;
+  width: 2.5em;
+  vertical-align: middle;
+}
+
 #message {
-    text-align: center;
-    font-family: Helvetica, sans-serif;
+  font-family: Helvetica, sans-serif;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #play-button {
